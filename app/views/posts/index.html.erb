@@ -28,8 +28,8 @@
               </div><!-- /.row -->
             </li>
             <li class="user"><%= link_to current_user.name, user_path(current_user.id) %></li>
-            <li><%= link_to "ホーム", feeds_path %></li>
-            <li><%= link_to '投稿', new_feed_path %></li>
+            <li><%= link_to "ホーム", posts_path %></li>
+            <li><%= link_to '投稿', new_post_path %></li>
             <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete ,data: { confirm: 'ログアウトしますか？' }%></li>
           <% else %>
             <li><%= link_to "新規登録", new_user_path %></li>
@@ -48,45 +48,45 @@
         <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
 
-      <% @feeds.each do |feed| %>
-        <div class="feed-main">
-        <div class="feed-table">
+      <% @posts.each do |post| %>
+        <div class="post-main">
+        <div class="post-table">
         <table>
         <tr>
           <td>
-          <% if feed.user.profile_image.url != nil%>
-            <span id="feed-round-image"><%= image_tag(feed.user.profile_image.thumb.url) %></span>
+          <% if post.user.profile_image.url != nil%>
+            <span id="post-round-image"><%= image_tag(post.user.profile_image.thumb.url) %></span>
           <% end %>
           </td>
           <td id="profile">
-            <h2 id="feed-profile-user"><%= link_to feed.user.name, user_path(feed.user.id) %></h2>
+            <h2 id="post-profile-user"><%= link_to post.user.name, user_path(post.user.id) %></h2>
           </td>
         </tr>
         </table>
         </div>
-          <div class="show-feed">
-            <p id="feed-image">
-              <%=link_to image_tag(feed.image.url), feed %>
+          <div class="show-post">
+            <p id="post-image">
+              <%=link_to image_tag(post.image.url), post %>
             </p>
           </div>
           <div id="show-sentence">
             <p id="show-content">
-              <%= feed.content %>
+              <%= post.content %>
             </p>
           </div>
 
-          <div class="show-feed">
-            <% unless feed.user_id == current_user.id %>
-              <% if current_user.favorites.find_by(feed_id: feed.id)  %>
-                <%= link_to 'お気に入り', favorite_path(id: feed.favorites.find_by(user_id: current_user.id).id), method: :delete, class: 'btn btn-warning favorite-btn' %>
+          <div class="show-post">
+            <% unless post.user_id == current_user.id %>
+              <% if current_user.favorites.find_by(post_id: post.id)  %>
+                <%= link_to 'お気に入り', favorite_path(id: post.favorites.find_by(user_id: current_user.id).id), method: :delete, class: 'btn btn-warning favorite-btn' %>
               <% else %>
-                <%= link_to 'お気に入り', favorites_path(feed_id: feed.id), method: :post, class: 'btn btn-default favorite-btn' %>
+                <%= link_to 'お気に入り', favorites_path(post_id: post.id), method: :post, class: 'btn btn-default favorite-btn' %>
               <% end %>
             <% end %>
           </div>
 
           <div class="create-time">
-            <%= feed.created_at.to_s(:datetime_jp) %>
+            <%= post.created_at.to_s(:datetime_jp) %>
           </div>
         </div>
       <% end %>
