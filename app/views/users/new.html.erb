@@ -31,3 +31,39 @@
             <li class="text-fence"><%= link_to "ホーム", posts_path %></li>
             <li class="text-fence"><%= link_to '投稿', new_post_path %></li>
             <li class="text-fence"><%= link_to "ログアウト", session_path(current_user.id), method: :delete ,data: { confirm: 'ログアウトしますか？' }%></li>
+            <% else %>
+          <li class="text-fence"><%= link_to "新規登録", new_user_path %></li>
+          <li class="text-fence"><%= link_to "ログイン", new_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+</header>
+<div class="main-header">
+<h1 id="title">Twilight Hour</h1>
+<div class="header">
+  <% if logged_in? %>
+    <span class="label label-info"><%= link_to "プロフィール", user_path(current_user.id) %></span>
+    <span class="label label-danger"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></span>
+  <% else %>
+    <span class="label label-primary"><%= link_to "新規登録", new_user_path %></span>
+    <span class="label label-success"><%= link_to "ログイン", new_session_path %></span>
+  <% end %>
+</div>
+  <h1 class="center entry">新規登録</h1>
+  <% flash.each do |key, value| %>
+        <p id="notice"><%= content_tag(:div, value,class:"#{key}") %></p>
+    <% end %>
+  <%= render 'form' %>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
