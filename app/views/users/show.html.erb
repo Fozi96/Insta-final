@@ -31,3 +31,77 @@
             <li><%= link_to "ホーム", posts_path %></li>
             <li><%= link_to '投稿', new_post_path %></li>
             <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete ,data: { confirm: 'ログアウトしますか？' }%></li>
+          <% else %>
+            <li><%= link_to "新規登録", new_user_path %></li>
+            <li><%= link_to "ログイン", new_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="container background-image">
+  <div class="row">
+    <div class="col-md-2"></div>
+
+      <div class="col-md-8 main">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+
+      <table>
+        <tr>
+          <td>
+          <% if @user.profile_image.url != nil%>
+            <span id="round-image"><%= image_tag(@user.profile_image.thumb.url) %></span>
+          <% end %>
+          </td>
+          <td id="profile">
+            <h1 id="profile-user"><%= @user.name %></h1>
+            <h4 id="profile-email"><%= @user.email %></h4>
+            <p id=profile-content><%= @user.profile_content %></p>
+          </td>
+        </tr>
+      </table>
+
+
+    <% if current_user == @user%>
+      <ol class="breadcrumb">
+        <li>
+          <%= link_to "ホーム", posts_path %>
+        </li>
+        <li>
+          <%= link_to '投稿する', new_post_path %>
+        </li>
+        <li>
+          <%= link_to "お気に入り", favorites_path(user_id: @user.id) %>
+        </li>
+        <li>
+          <%= link_to 'プロフィール編集', edit_user_path(@user) %>
+        </li>
+        <li>
+          <%= link_to 'アカウント削除', user_path(@user), method: :delete, data: { confirm: 'アカウントを削除しますか?' } %>
+        </li>
+      </ol>
+    <% else %>
+      <ol class="breadcrumb">
+        <li id="favorite">
+          <%= link_to '投稿', new_feed_path(user_id: @user.id) %>
+        </li>
+        <li>
+          <%= link_to "お気に入り", favorites_path(user_id: @user.id) %>
+        </li>
+      </ol>
+    <% end %>
+
+      <div class="flex">
+        <% @feeds.each do |feed| %>
+          <span id="my-image"><%= link_to image_tag(feed.image.url), post %></span>
+        <% end %>
+      </div>
+
+      </div>
+
+    <div class="col-md-2"></div>
+  </div>
+</div>
