@@ -1,0 +1,16 @@
+<h1><%= @user.name %></h1>
+<%= image_tag "#{@user.icon}" %>
+<table>
+  <tbody>
+    <% @favorites.each do |post| %>
+      <tr>
+        <td><%= post.user.name %></td>
+        <td><%= image_tag(post.image.url) %></td>
+        <td><%= post.posts %></td>
+        <td><%= link_to 'Show', @post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Home', posts_path %>

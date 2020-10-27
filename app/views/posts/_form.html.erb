@@ -1,32 +1,29 @@
-<div class="edit-user-main">
-  <%= form_with(model: post, local: true, url:choose_new_or_edit) do |form| %>
-    <% if post.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_with(model: @post, local: true, url: choose_new_or_edit ) do |form| %>
+  <% if post.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-        <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
+    <ul>
+    <% post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
     <% end %>
-
-    <div class="field">
-      <%= form.label :image %>
-      <p id="edit-image"><%= image_tag(@post.image.url) if @post.image && @post.image.url %></p>
-      <%= form.file_field :image %>
-      <%= form.hidden_field :image_cache %>
-    </div>
-
-    <div class="field">
-      <%= form.label :content %>
-      <p id="post-content"><%= form.text_area :content %></p>
-    </div>
-
-    <div class="actions">
-      <%= form.submit value="投稿する" %>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
-</div>
+  <div class="field">
+    <%= form.label :posts %>
+    <%= form.text_area :posts %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
