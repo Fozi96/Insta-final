@@ -1,13 +1,13 @@
 <%= form_with(model: @post, url: posts_path, local: true) do |form| %>
   <%= form.hidden_field :posts %>
-  <p><%= @post.posts %></p>
+  <p><%= @post.content %></p>
   <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
   <%= form.hidden_field :image_cache %>
   <%= form.submit "Share" %>
 <% end %>
 
 <%= form_with(model: @post, url: new_post_path, local: true, method: 'get') do |form| %>
-  <%= form.hidden_field :posts %>
+  <%= form.hidden_field :content %>
   <%= form.hidden_field :image_cache %>
   <%= form.submit "back", name:'back' %>
 <% end %>

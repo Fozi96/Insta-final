@@ -52,7 +52,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
   end
-  
+
   def destroy
     @post.destroy
     respond_to do |format|
@@ -67,6 +67,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:posts, :id, :image, :image_cache, :user_id, :name, :email)
+    params.require(:post).permit(:id, :image, :image_cache, :user_id, :name, :email, :content)
   end
 end
