@@ -1,38 +1,24 @@
-<div class="row">
+<div class="container-fluid text-center">
+
   <div class="col-xs-8 col-xs-push-2">
     <p id="notice"><%= notice %></p>
   </div>
-</div>
 
-<div class="container-fluid">
-  <div class="row about">
-    <div class="col-xs-6 col-xs-push-2">
-      <div class="row">
-        <div class="col-xs-12 about">
-          <p>
+
+
             <span style="font-size:36px">
               <%= @user.name %><br>
             </span>
             <strong>Email:</strong>
               <%= @user.email %>
-          </p>
+
 
           <% if logged_in? %>
-            <div class="row">
               <% if @user == current_user %>
-                <%= link_to 'New Post', new_post_path %> |
-                <%= link_to 'Edit Info', edit_user_path(@user) %> |
-                <%= link_to 'Delete Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'New Post', new_post_path , class: "btn btn-outline-dark common-btn edit-profile-btn" %>
+                <%= link_to 'Edit Info', edit_user_path(@user) , class: "btn btn-outline-dark common-btn edit-profile-btn" %>
+                <%= link_to 'Delete Account', @user, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger "%>
               <% end %>
-            </div>
           <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-12 space">
-  </div>
 </div>

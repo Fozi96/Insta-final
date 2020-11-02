@@ -1,32 +1,22 @@
-<div class="row">
-  <div class="col-xs-4 col-xs-push-4 form">
+<div class="container">
+<div class="form-login box text-center">
 
-    <h1>Instagram-clone</h1>
     <%= form_with(scope: :session, url: sessions_path, local: true) do |form|%>
+    <div class="form-group">
       <p><%= form.email_field :email, placeholder: 'email', class: "log-in-tag" %></p>
-      <br>
+    </div>
+    <div class="form-group">
       <p><%= form.password_field :password, placeholder: 'password', class: "log-in-tag" %></p>
-      <br>
-      <div class="row">
-        <div class="col-xs-12 form-btn">
+    </div>
+
+        <div class="actions">
         <%= form.submit "Login" %>
         </div>
-      </div>
+
+
     <% end %>
 
-    <hr>
-
     <p>New Account？<%= link_to 'Create an account', new_user_path %></p>
-  </div>
-</div>
+    </div>
 
-<div class="row">
-  <div class="col-xs-12 space">
-  </div>
-  <div class="col-xs-12 space">
-  </div>
-  <div class="col-xs-12 space">
-  </div>
-  <div class="col-xs-12 space">
-  </div>
 </div>

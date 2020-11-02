@@ -1,46 +1,34 @@
-<% if @user.errors.any? %>
+<div class="container">
+  <% if @user.errors.any? %>
   <div class="alert alert-danger" role="alert">
     <ul>
       <% @user.errors.full_messages.each do |message|%>
-        <li><%= message %></li>
-        <% end %>
+      <li><%= message %></li>
+      <% end %>
     </ul>
   </div>
-<% end %>
-<br>
+  <% end %>
+  <br>
 
-<div class="row">
-  <div class="col-xs-4 col-xs-push-4 form">
+
+  <div class="form-login box text-center">
     <h1>Sign up for Instagram-clone</h1>
     <p>Check out your friend's Pictures</p>
     <%= form_with(model: @user, local: true) do |form|%>
-      <p><%= form.text_field :name, placeholder: 'name', class: "log-in-tag" %></p>
-      <br>
-      <p><%= form.email_field :email, placeholder: 'email', class: "log-in-tag" %></p>
-      <br>
-      <p><%= form.password_field :password, placeholder: 'password', class: "log-in-tag" %></p>
-      <br>
-      <p><%= form.password_field :password_confirmation, placeholder: 'password_confirmation', class: "log-in-tag" %></p>
-      <br>
-      <p><%= form.file_field :icon, placeholder: 'icon', class: "log-in-tag" %></p>
-      <br>
-      <div class="row">
-        <div class="col-xs-12 form-btn">
-          <%= form.submit "Create my account" %>
-        </div>
-      </div>
-    <% end %>
-    <hr>
+    <p><%= form.text_field :name, placeholder: 'name', class: "log-in-tag" %></p>
+    <br>
+    <p><%= form.email_field :email, placeholder: 'email', class: "log-in-tag" %></p>
+    <br>
+    <p><%= form.password_field :password, placeholder: 'password', class: "log-in-tag" %></p>
+    <br>
+    <p><%= form.password_field :password_confirmation, placeholder: 'password_confirmation', class: "log-in-tag" %></p>
+    <br>
+    <p><%= form.file_field :icon, placeholder: 'icon', class: "log-in-tag" %></p>
+
+    <%= form.submit "Create my account" , class: "btn btn-primary"  %>
     <p>Already have an account？<%= link_to 'Login', new_session_path %></p>
   </div>
+  <% end %>
+  
 
-  <div class="row">
-    <div class="col-xs-12 space">
-    </div>
-    <div class="col-xs-12 space">
-    </div>
-    <div class="col-xs-12 space">
-    </div>
-    <div class="col-xs-12 space">
-    </div>
-  </div>
+</div>
