@@ -1,8 +1,5 @@
 <p id="notice"><%= notice %></p>
 <p><%= @post.user.name %>
-  <%= link_to user_path(@post.user.id)  do %>
-    <%= image_tag(@post.user.icon.url) if @post.user.icon && @post.user.icon.url %>
-  <% end %>
 </p>
 <p><strong>Image:</strong>
   <%= image_tag(@post.image.url) if @post.image && @post.image.url %>

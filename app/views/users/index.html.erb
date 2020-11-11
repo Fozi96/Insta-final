@@ -1,3 +1,4 @@
+<div class="text-center"
 <p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-xs-4 col-xs-push-4 post">
@@ -6,9 +7,7 @@
   <div class="row list_wrapper">
     <% @users.each do |user| %>
       <div class="row list-head">
-        <div class="col-xs-2 thumb-img list">
-          <%= image_tag user.icon.url(), class: 'img-responsive img-circle' %>
-        </div>
+
         <div class="col-xs-10 user-info">
           <h3>
             <strong> <%= link_to "#{user.name}", user_path(user.id) %> </strong>
@@ -25,11 +24,4 @@
 
   </div>
  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12 space">
-  </div>
-  <div class="col-xs-12 space">
-  </div>
 </div>
